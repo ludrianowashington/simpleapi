@@ -8,19 +8,9 @@ module.exports = {
   },
 
   async show(req, res) {
-    const { id } = req.params;
+    const postsId = [];
 
     const responseApi = await api.get("/posts");
-
-    const posts = responseApi.data;
-
-    let selectedPost = {};
-    posts.map((post) => {
-      if (post.id == id) {
-        selectedPost = post;
-      }
-    });
-
-    res.send(selectedPost);
+    const selectedPost = responseApi.data;
   },
 };
