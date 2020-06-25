@@ -1,21 +1,25 @@
-const axios = require("../Utils/api");
 const api = require("../Utils/api");
 
 module.exports = {
   async index(req, res) {
+    const responseApi = await api.get("/users");
+
+    return res.send(responseApi.data);
+  },
+
+  async show(req, res) {
     const { id } = req.params;
 
-    const response = await api.get("/users");
+    const responseApi = await api.get("/users");
 
-    const user = response.data;
+    const users = responseApi.data;
 
     let selectedUser = {};
-    user.map((user) => {
+    users.map((user) => {
       if (user.id == id) {
         selectedUser = user;
       }
     });
-
-    return res.json(selectedUser);
+    res.send(selectedUser);
   },
 };
