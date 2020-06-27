@@ -1,6 +1,4 @@
 const api = require("../Utils/api");
-const { response } = require("express");
-const { groupUser, groupPost } = require("../Utils/groupUserPost");
 
 module.exports = {
   async index(req, res) {
@@ -18,15 +16,49 @@ module.exports = {
     const responseUser = await api.get("/users");
     const users = await responseUser.data;
 
-    let generalPosts = [...posts].map((post) => {
-      const user = users.filter((user) => {
-        return parseInt(user.id) === parseInt(post.userId);
-      })[0];
-      post.user = { name: user.name, company: user.company.name };
-      console.log(post);
-      return post;
+    let userPost = [...posts]
+      .map((post) => {
+        const user = users.filter((user) => {
+          return parseInt(user.id) === parseInt(post.userId);
+        })[0];
+        post.user = { name: user.name, company: user.company.name };
+        return post;
+      })
+      .filter((post) => {
+        return parseInt(post.id) === parseInt(id);
+      });
+
+    return res.send(userPost);
+  },
+
+  async postFilter() {
+    const usersResponse = await api.get("/users");
+    const users = usersResponse.data;
+    const postResponse = await api.get("/posts");
+    const posts = postResponse.data;
+
+    const filteredUsers = [];
+    const filteredPosts = [];
+
+    users.map((user) => {
+      if (companyId.includes(user.company.id)) {
+        const { id } = user;
+        filteredUsers.push(id);
+      }
+    });
+    posts.map((post) => {
+      if (filteredUsers.includes(post.userId)) {
+        filteredPosts.push(post);
+      }
     });
 
-    return res.send(generalPosts);
+    const updateUserPosts = (post) => {
+      const user = users.find((x) => x.id === post.userId);
+      return user;
+    };
+
+    filteredPosts.forEach(updateUserPosts);
+
+    return filteredPosts;
   },
 };
