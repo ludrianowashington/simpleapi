@@ -1,4 +1,6 @@
 const api = require("../Utils/api");
+const { response } = require("express");
+const { groupUser, groupPost } = require("../Utils/groupUserPost");
 
 module.exports = {
   async index(req, res) {
@@ -8,9 +10,23 @@ module.exports = {
   },
 
   async show(req, res) {
-    const postsId = [];
+    const { id } = req.params;
 
-    const responseApi = await api.get("/posts");
-    const selectedPost = responseApi.data;
+    const responsePost = await api.get("/posts");
+    const posts = await responsePost.data;
+
+    const responseUser = await api.get("/users");
+    const users = await responseUser.data;
+
+    let generalPosts = [...posts].map((post) => {
+      const user = users.filter((user) => {
+        return parseInt(user.id) === parseInt(post.userId);
+      })[0];
+      post.user = { name: user.name, company: user.company.name };
+      console.log(post);
+      return post;
+    });
+
+    return res.send(generalPosts);
   },
 };

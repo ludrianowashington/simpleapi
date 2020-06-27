@@ -5,7 +5,7 @@ module.exports = {
   async index(req, res) {
     const compannies = [];
 
-    const responseApi = await api.get("/users");
+    const responseApi = await api.get("/companies");
     const users = responseApi.data;
 
     users.map((user) => {
