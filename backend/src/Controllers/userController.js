@@ -10,16 +10,26 @@ module.exports = {
   async show(req, res) {
     const { id } = req.params;
 
-    const responseApi = await api.get("/users");
+    const responsePost = await api.get("/posts");
+    const posts = await responsePost.data;
 
-    const users = responseApi.data;
+    const responseUser = await api.get("/users");
+    const users = await responseUser.data;
 
-    let selectedUser = {};
-    users.map((user) => {
-      if (user.id == id) {
-        selectedUser = user;
-      }
-    });
-    res.send(selectedUser);
+    let post = [];
+
+    let userPosts = [...users]
+      .map((user) => {
+        post = posts.filter((post) => {
+          return parseInt(post.userId) === parseInt(id);
+        });
+        user.posts = post.valueOf();
+        return user;
+      })
+      .filter((user) => {
+        return parseInt(user.id) === parseInt(id);
+      });
+
+    return res.send(userPosts);
   },
 };
