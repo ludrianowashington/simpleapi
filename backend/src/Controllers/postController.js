@@ -21,7 +21,7 @@ module.exports = {
         const user = users.filter((user) => {
           return parseInt(user.id) === parseInt(post.userId);
         })[0];
-        post.user = { name: user.name, company: user.company.name };
+        post.user = { id: user.id, name: user.name };
         return post;
       })
       .filter((post) => {

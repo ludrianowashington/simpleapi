@@ -4,7 +4,18 @@ module.exports = {
   async index(req, res) {
     const responseApi = await api.get("/users");
 
-    return res.send(responseApi.data);
+    const users = responseApi.data;
+    const data = users.map(
+      ({ id, name, username, email, company: { name: company } }) => ({
+        id,
+        name,
+        username,
+        email,
+        company,
+      })
+    );
+
+    return res.send(data);
   },
 
   async show(req, res) {
@@ -16,20 +27,17 @@ module.exports = {
     const responseUser = await api.get("/users");
     const users = await responseUser.data;
 
-    let post = [];
+    let dataPost = posts
+      .filter((post) => post.userId === parseInt(id))
+      .map(({ userId, id, title }) => ({ userId, id, title }));
 
-    let userPosts = [...users]
-      .map((user) => {
-        post = posts.filter((post) => {
-          return parseInt(post.userId) === parseInt(id);
-        });
-        user.posts = post.valueOf();
-        return user;
-      })
-      .filter((user) => {
-        return parseInt(user.id) === parseInt(id);
-      });
+    let dataUser = users
+      .filter((user) => user.id === parseInt(id))
+      .map((user) => ({
+        user,
+        post: dataPost,
+      }));
 
-    return res.send(userPosts);
+    return res.send(dataUser);
   },
 };
