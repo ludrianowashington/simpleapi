@@ -1,0 +1,138 @@
+
+/* Container */
+.posts-container{
+  width: 100%;
+  max-width: 1180px;
+  padding: 0 30px;
+  margin: 32px auto;
+}
+
+/* Header - Begin */
+.posts-container header {
+  display: flex;
+  align-items: center;
+}
+
+.posts-container header span {
+  font-size: 20px;
+  margin-left: 24px;
+}
+
+.posts-container header img {
+  width: 15em;
+}
+
+.posts-container header div{
+  width: auto;
+  display: flex;
+  margin-left: auto;
+}
+
+.posts-container header div button {
+  height: 60px;
+  width: 60px;
+  border-radius: 4px;
+  border: 1px solid #dcdce6;
+  transition: border-color 0.2s;
+  margin-left: 12px;
+}
+
+.posts-container header div button:hover  {
+  border-color: #999;
+}
+/* Header - End */
+
+/* Search - Begin */
+.posts-container div.search {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.posts-container div.search input{
+  width: 100%;
+  height: auto;
+  font-size: 20px;
+  padding: 10px 20px;
+  background-color: #f2feff;
+  border: 1px solid #7cc9ce;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  color: #777;
+}
+
+.posts-container div.search button{
+  width: 45px;
+  height: auto;
+  background-color: #f2feff;
+  border: 1px solid #7cc9ce;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  transition: ease-in-out .3s;
+  color: #999;
+}
+
+.posts-container div.search button:hover{
+  background-color: #e0ecee;
+}
+
+/* Search - End */
+
+/* Main - Begin */
+.posts-container main ul {
+  display: grid;
+  columns: repeat(2, 1fr);
+  row-gap: 24px;
+  list-style: none;
+}
+
+.posts-container main ul li {
+  background: #fff;
+  padding: 24px;
+  border-radius: 8px;
+  position: relative;
+}
+
+.posts-container main ul li button {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  right: 20px;
+  top: 25px;
+  border: 0;
+  border-radius: 15px;
+  color: #49aaaf;
+  background-color: #dff0f0;
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  
+}
+
+.posts-container main ul li button:hover {
+  background-color: #c4e9e9;
+}
+
+.posts-container main ul li > .link{
+  text-decoration: none;
+  display: block;
+  margin-bottom: 16px;
+  color: #56BCC1;
+  font-size: 28px;
+}
+
+.posts-container main ul li > .link:hover{
+  text-decoration: underline;
+}
+
+.posts-container main ul li p + strong {
+  margin-top: 32px;
+}
+
+.posts-container main ul li p {
+  color: #737380;
+  line-height: 21px;
+  font-size: 1px;
+} 
+/* Main - End */

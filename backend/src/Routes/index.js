@@ -1,12 +1,11 @@
 const { Router } = require("express");
 const Users = require("../Controllers/userController");
 const Posts = require("../Controllers/postController");
+const Logon = require("../Controllers/logonController");
 
 const routes = Router();
 
-routes.get("/", (req, res) => {
-  res.send({ message: "Welcome to Home" });
-});
+routes.get("/", Logon.index);
 
 routes.get("/users", Users.index);
 routes.get("/users/:id", Users.show);

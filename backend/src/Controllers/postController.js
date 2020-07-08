@@ -2,9 +2,21 @@ const api = require("../Utils/api");
 
 module.exports = {
   async index(req, res) {
-    const responseApi = await api.get("/posts");
+    const responsePost = await api.get("/posts");
+    const posts = await responsePost.data;
 
-    return res.send(responseApi.data);
+    const responseUser = await api.get("/users");
+    const users = await responseUser.data;
+
+    let responseApi = [...posts].map((post) => {
+      const user = users.filter((user) => {
+        return parseInt(user.id) === parseInt(post.userId);
+      })[0];
+      post.author = user.name;
+      return post;
+    });
+
+    return res.send(responseApi);
   },
 
   async show(req, res) {
@@ -21,7 +33,7 @@ module.exports = {
         const user = users.filter((user) => {
           return parseInt(user.id) === parseInt(post.userId);
         })[0];
-        post.user = { id: user.id, name: user.name };
+        post.author = { name: user.name, company: user.company.name };
         return post;
       })
       .filter((post) => {
