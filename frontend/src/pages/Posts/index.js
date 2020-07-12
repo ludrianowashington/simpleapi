@@ -8,7 +8,7 @@ import logoImg from "../../assets/img/logo.png";
 
 import "./style.css";
 
-export default function Posts() {
+export default function Posts(props) {
   const [posts, setPosts] = useState([]);
 
   const history = useHistory();
@@ -61,7 +61,7 @@ export default function Posts() {
         <ul>
           {posts.map((post) => (
             <li key={post.id}>
-              <Link className="link">
+              <Link className="link" to={`/posts/${post.id}`}>
                 <strong>{post.title}</strong>
               </Link>
 
