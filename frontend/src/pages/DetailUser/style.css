@@ -1,0 +1,94 @@
+  /* Container */
+.user-container{
+  width: 100%;
+  max-width: 1180px;
+  padding: 0 30px;
+  margin: 32px auto;
+}
+
+/* Header - Begin */
+.user-container header {
+  display: flex;
+  align-items: center;
+}
+
+.user-container header span {
+  font-size: 20px;
+  margin-left: 24px;
+}
+
+.user-container header img {
+  width: 15em;
+}
+
+.user-container header div{
+  width: auto;
+  margin-right: 50px;
+}
+
+.user-container header div button {
+  width: 50px;
+  height: 40px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #74bfc9;
+  transition: border-color 0.2s;
+}
+
+.user-container header div button:hover  {
+  border-color: #999;
+}
+/* Header - End */
+
+/* Main - Begin */
+.user-container > div {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px 30px;
+  display: flex;
+}
+
+.user-container div aside {
+  width: 420px;
+  height: 600px;
+  background: #d7e6e4;
+  border-radius: 12px;
+  padding: 30px 20px;
+}
+
+.user-container div aside strong {
+  font-size: 20px;
+  text-align: center;
+  display: block;
+  color: #333;
+}
+
+.user-container div aside img{
+  width: 300px;
+}
+
+.user-container div main {
+  width: 100%;
+  margin-left: 10px;
+}
+
+.user-container div main ul {
+  margin-top: 20px;
+  list-style: none;
+}
+
+.user-container div main ul li{
+  margin: 12px 0px;
+  background: #FFF;
+  border-radius: 12px;
+  padding: 20px 10px;
+}
+
+.user-container div main ul li a{
+  text-decoration: none;
+  font-size: 1.5em;
+  color: #7cc9ce;
+  font-weight: 700;
+} 

@@ -8,7 +8,7 @@ import logoImg from "../../assets/img/logo.png";
 
 import "./style.css";
 
-export default function Posts(props) {
+export default function Posts() {
   const [posts, setPosts] = useState([]);
 
   const history = useHistory();

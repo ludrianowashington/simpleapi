@@ -27,17 +27,33 @@ module.exports = {
     const responseUser = await api.get("/users");
     const users = await responseUser.data;
 
-    let dataPost = posts
-      .filter((post) => post.userId === parseInt(id))
-      .map(({ userId, id, title }) => ({ userId, id, title }));
+    let data = [...users]
+      .map((user) => {
+        const post = posts
+          .filter((post) => {
+            return parseInt(post.userId) === parseInt(user.id);
+          })
+          .map(({ userId, id, title }) => ({ userId, id, title }));
 
-    let dataUser = users
-      .filter((user) => user.id === parseInt(id))
-      .map((user) => ({
-        user,
-        post: dataPost,
-      }));
+        user.address =
+          user.address.street +
+          ", " +
+          user.address.suite +
+          ", " +
+          user.address.city +
+          ", " +
+          user.address.zipcode;
 
-    return res.send(dataUser);
+        user.company = user.company.name;
+
+        user.posts = post;
+
+        return user;
+      })
+      .filter((user) => {
+        return parseInt(user.id) === parseInt(id);
+      });
+
+    return res.json(data[0]);
   },
 };

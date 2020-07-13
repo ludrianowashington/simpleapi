@@ -28,7 +28,7 @@ module.exports = {
     const responseUser = await api.get("/users");
     const users = await responseUser.data;
 
-    let userPost = posts
+    let userPost = [...posts]
       .map((post) => {
         const user = users.filter((user) => {
           return parseInt(user.id) === parseInt(post.userId);
