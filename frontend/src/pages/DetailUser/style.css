@@ -45,14 +45,13 @@
 /* Main - Begin */
 .user-container > div {
   max-width: 1200px;
-  margin: 0 auto;
-  padding: 30px 30px;
+  margin: 50px 10px;
   display: flex;
 }
 
 .user-container div aside {
   width: 420px;
-  height: 600px;
+  height: 30%;
   background: #d7e6e4;
   border-radius: 12px;
   padding: 30px 20px;
@@ -66,12 +65,12 @@
 }
 
 .user-container div aside img{
-  width: 300px;
+  width: 100%;
 }
 
 .user-container div main {
   width: 100%;
-  margin-left: 10px;
+  margin-left: 20px;
 }
 
 .user-container div main ul {
@@ -84,11 +83,19 @@
   background: #FFF;
   border-radius: 12px;
   padding: 20px 10px;
+  box-shadow: 2px 2px 5px #3335;
+  transition: ease-in-out .2s;
+  text-transform: uppercase;
+}
+
+.user-container div main ul li:hover{
+  box-shadow: 2px 2px 6px #333a;
+  text-decoration: underline;
+  font-weight: 800;
 }
 
 .user-container div main ul li a{
   text-decoration: none;
   font-size: 1.5em;
   color: #7cc9ce;
-  font-weight: 700;
 } 

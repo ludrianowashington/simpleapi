@@ -6,7 +6,6 @@ import {
   FiMail,
   FiMap,
   FiPhone,
-  FiGlobe,
   FiBriefcase,
 } from "react-icons/fi";
 
